@@ -1,0 +1,4 @@
+#ignore .env for security reasonns
+.env
+#ignore node_modules: will be reinstalled with "npm install"
+node_modules
