@@ -14,7 +14,7 @@ De plus: chaque utilisateur peut "liker" ou "disliker" chacune des sauces enregi
 
 <h3>Connexion</h3>
 
-Dans le dossier backend:rajouter le fichier .env qui vous a été envoyé séparément.
+Dans le dossier backend: rajouter le fichier .env qui vous a été envoyé séparément.
 
 <h2>Procédure de lancement</h2>
 
