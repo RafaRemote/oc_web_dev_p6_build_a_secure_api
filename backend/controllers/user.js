@@ -32,7 +32,7 @@ exports.login = (req, res, next) => {                                           
             userId: user._id,                                                         //returns in the response: the user._id from the database
             token: jwt.sign(                                                          //use jsonwebtoken's method sign: paramaters: data to be encoded
             { userId: user._id },                                                     //first argument: userId
-              'RANDOM_TOKEN_SECRET',                                                  //second argument: secret key for the encoding
+              process.env.TOKEN,                                                  //second argument: secret key for the encoding
               { expiresIn: '24h' }                                                    //configuration argument: expiration time
             )
           });

@@ -6,8 +6,8 @@ const multer =      require('../middleware/multer-config');   // import middlewa
 
 // routes CRUD: Create, Read, Update, Delete
 // routes: use auth to secure autentification
-// routes: use controllers from sauce.js (saucesCtrl.x)
-// routes: use multer, to manage images (create and modify)
+// routes: use controllers from sauce.js (saucesCtrl)
+// routes: use multer, to manage the files (the images)
 
 router.get('/',             auth,           saucesCtrl.getAllSauce);                
 router.post('/',            auth, multer,   saucesCtrl.createOneSauce);    

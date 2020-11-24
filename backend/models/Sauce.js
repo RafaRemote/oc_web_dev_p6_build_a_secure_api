@@ -1,5 +1,8 @@
 const mongoose = require('mongoose');
 
+
+
+// le modèle de sauce prévue dans la note de cadrage.
 const sauceSchema = mongoose.Schema({
     
     userId:             { type: String,     required: true },
