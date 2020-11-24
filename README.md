@@ -22,7 +22,7 @@ Avec un terminal, aller dans le dossier "frontend" puis:
 
     - taper: "npm install",
     - puis: "npm start",
-    - enfin: dans votre navigateur se rendre à l'adresse: http://localhost:4200/. 
+    - enfin: dans votre navigateur se rendre à l'adresse: http://localhost:4200 
 
 #### Partie backend
 
@@ -38,6 +38,6 @@ Avec un terminal, aller dans le dossier "frontend" puis:
     
             -taper: "npm install",
             -puis: "nodemon server",
-            -le serveur écoute sur le port: http://localhost:3000.
+            -le serveur écoute sur le port: http://localhost:3000
 
 **Arrivé à ce point, vous pouvez utiliser les fonctionnalités du site.**
