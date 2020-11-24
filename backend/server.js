@@ -1,13 +1,13 @@
-const http =  require('http');      //import built-in node.js module: allows node.js to transfer data over http.
-const app =   require('./app');     //import app.js
+const http =  require('http');      
+const app =   require('./app');     
 
-// Optimizaton server.js 
-// normalizePort send a valid Port
+// Optimisation de server.js
+// normalizePort renvoi un port valide
 const normalizePort = val => {
-  const port = parseInt(val, 10);
+  const port = parseInt(val, 10);   //analyse de l'arggumentpars
 
-  if (isNaN(port)) {
-    return val;
+  if (isNaN(port)) {    // si ce n'est pas un Nombre (Nan) 
+    return val;         // renvoie l'argument passé à la fonction
   }
   if (port >= 0) {
     return port;
