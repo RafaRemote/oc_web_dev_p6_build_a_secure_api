@@ -1,34 +1,45 @@
 <h1>SO PEKOCKO</h1>
+<h2>Présentation et instructions</h2>
+<br />
+<h3>Présentation</h3>
 
-Objectif: permettre aux internautes de s'inscrire sur le site et de créer des fiches détaillant des sauces selon un modèle bien précis.
+<p>Le site <i>SO PEKOCKO</i> est un site d'avis culinaires où les utilisateurs peuvent partager des fiches concernant des sauces selon un modèle précis, incluant la possibilité de "liker" ou "disliker" les sauces.</p>
 
-L'utilisateur peut: <br />
-    consulter toutes les sauces déjà créées, <br />
-    créer une sauce, <br />
-    modifier les sauces qu'il a créé, <br />
-    supprimer les fiches qu'il a créé. <br />
+<p>Objectif: permettre à l'internaute de s'inscrire sur le site et de pouvoir:</p>
+    <ul>
+        <li>consulter toutes les sauces enregistrées,</li>
+        <li>créer des sauces,</li>
+        <li>modifier les sauces qu'il a créé,</li>
+        <li>supprimer les sauces qu'il a crée,</li>
+        <li>liker ou disliker les sauces enregistrées sur le site</li>
+    </ul>
 
-De plus: chaque utilisateur peut "liker" ou "disliker" chacune des sauces enregistrées sur le site.  <br />
+<h3>Instructions pour le lancement: partie Frontend et partie Backend</h3>
 
- <h2>Utilisation de la base de données MongoDB Atlas</h2>
+<h4>Partie Frontend</h4>
 
-<h3>Connexion</h3>
+<p>Avec un terminal, aller dans le dossier "frontend" puis:</p>
 
-Dans le dossier backend: rajouter le fichier .env qui vous a été envoyé séparément.
+<ul>
+    <li>taper: "npm install",</li>
+    <li>puis: "npm start",</li>
+    <li>enfin: dans votre navigateur se rendre à l'adresse: http://localhost:4200/. </li>
+</ul>
+   
 
-<h2>Procédure de lancement</h2>
+<h4>Partie Backend</h4>
 
-<h3>Partie Frontend</h3>
+<p>Dans le dossier backend: créer un dossier "images" <b>vide</b></p>
+<br />
+<p>Utilisation de la base de données MongoDB Atlas, connexion :</p>
+<p>toujours dans le dossier backend: rajouter le fichier .env qui vous a été envoyé séparément.</p>
+<br />
 
-
-Avec un terminal, aller dans le dossier "frontend", puis: <br />
-    taper: "npm install", <br />
-    puis: "npm start", <br />
-    enfin: dans votre navigateur se rendre à l'adresse: http://localhost:4200/. <br />
-
-<h3>Partie Backend</h3>
-
-Avec un terminal, aller dans le dossier 'backend", puis: <br />
-    taper: "npm install", <br />
-    puis: "nodemon server", <br />
-    le serveur écoute sur le port: http://localhost:3000/.  <br />
+<p>Avec un terminal, aller dans le dossier 'backend", puis:</p>
+ <ul>
+     <li>taper: "npm install",</li>
+     <li>puis: "nodemon server"</li>
+     <li>le serveur écoute sur le port: http://localhost:3000</li>
+</ul>
+<br />
+<p><b>Arrivé à ce point, vous pouvez utiliser les fonctionnalités du sit.</b></p>
