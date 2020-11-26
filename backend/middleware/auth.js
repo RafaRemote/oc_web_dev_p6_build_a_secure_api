@@ -7,13 +7,14 @@ module.exports = (req, res, next) => {
     const decodedToken = jwt.verify(token, process.env.TOKEN);      //decode the token with jsonwebtoken method: verify: 2 parameters: the token and the secret key. if error, it will be returned in the catch, else return a js object, so we can manipulate it.
     const userId = decodedToken.userId;                             //now we hade the decoded token, it's now a js object, we extract the userId from it
     if (req.body.userId && req.body.userId !== userId) {            //if userId from the request is true (exists) AND userId is different from the the userId we found, then ...
-      throw 'Invalid user ID';                                      //invalid userId
+      throw Error;                                                  //invalid userId
     } else {
-      next();                                                       //else: all is ok, move to the next
+      req.token = token;  
+      req.user = userId;  // j'ajoute l'id du user: cela servira à l'authentification pour les routes delete et put. 
+      next();      
+                                                       //else: all is ok, move to the next
     }
   } catch {
-    res.status(401).json({                                           // 401 status code: unauthorized
-      error:error | "unauthentified request"
-    });
+    res.status(401).json({error:error});                            // code 401: unauthorized
   }
 };
