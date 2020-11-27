@@ -1,20 +1,20 @@
-const jwt = require('jsonwebtoken');  //import package jsonwebtoken: to manage the tokens (tokens use for REST API: stateless, no sessions at the server side)
+const jwt = require('jsonwebtoken'); 
 
-
+// authentification
 module.exports = (req, res, next) => {
-  try {                                                             //use try/catch to manage the errors, because multiple can go wrong in these lignes of codes
-    const token = req.headers.authorization.split(' ')[1];          //get rid of the word "bearer"
-    const decodedToken = jwt.verify(token, process.env.TOKEN);      //decode the token with jsonwebtoken method: verify: 2 parameters: the token and the secret key. if error, it will be returned in the catch, else return a js object, so we can manipulate it.
-    const userId = decodedToken.userId;                             //now we hade the decoded token, it's now a js object, we extract the userId from it
-    if (req.body.userId && req.body.userId !== userId) {            //if userId from the request is true (exists) AND userId is different from the the userId we found, then ...
-      throw Error;                                                  //invalid userId
+  try {                                                             
+    const token = req.headers.authorization.split(' ')[1];          // on sépare le bearer et on ne garde que le token
+    const decodedToken = jwt.verify(token, process.env.TOKEN);      // on vérifie (avec la méthode verify de jsonwebtoken) que le token, correspeond au secret (token) que l'on a dans process.env
+    const userId = decodedToken.userId;                             
+    if (req.body.userId && req.body.userId !== userId) {                        
+      throw Error;                                                  
     } else {
       req.token = token;  
-      req.user = userId;  // j'ajoute l'id du user: cela servira à l'authentification pour les routes delete et put. 
+      req.user = userId;  // on ajoute l'id du user: cela servira à l'authentification pour les routes delete et put. 
       next();      
-                                                       //else: all is ok, move to the next
+       
     }
   } catch {
-    res.status(401).json({error:error});                            // code 401: unauthorized
+    res.status(401).json({error:error});                            
   }
 };

@@ -73,8 +73,13 @@ exports.rateOneSauce = (req, res, _) => {
             $inc: { likes: -1 },                            // on décrémente la valeur des likes de 1 (soit -1)
             $pull: { usersLiked: req.body.userId }          // on retire l'utilisateur du tableau.
             })
+<<<<<<< HEAD
           .then(() => { res.status(201).json({ message: "vote enregistré."}); }) //code 201: created
           .catch((error) => { res.status(400).json({error}); });  
+=======
+              .then(() => { res.status(201).json({ message: "vote enregistré."}); }) //code 201: created
+              .catch((error) => { res.status(400).json({error}); });
+>>>>>>> experiment
           } 
         if (sauce.usersDisLiked.find(user => user === req.body.id)) {  //mêmes principes que précédemment avec le tableau usersDisliked
           Sauce.updateOne({ _id: req.params.id }, {
