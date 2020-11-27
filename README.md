@@ -20,18 +20,17 @@ Le site **SO PEKOCKO** est un site d'avis culinaires où les utilisateurs peuven
 
 Avec un terminal, aller dans le dossier "frontend" puis:
 
+    - taper: "npm install node-sass",
     - taper: "npm install",
     - puis: "npm start",
     - enfin: dans votre navigateur se rendre à l'adresse: http://localhost:4200 
 
 #### Partie backend
 
-    - Aller dans le dossier backend, puis:
+Avec un terminal, aller dans le dossier backend, puis:
 
-        - créer un dossier "images" **vide**.
-    
-        - créer un dossier ".env" et y coller les lignes de code qui vous ont été envoyées séparément,
-        
+        - créer un dossier "images" **vide**,
+        - créer un fichier ".env" et y implémenter les lignes de code qui vous ont été envoyées séparément,
         - penser à bien enregistrer,
 
         - enfin dans un terminal, ouvert dans le dosser backend:

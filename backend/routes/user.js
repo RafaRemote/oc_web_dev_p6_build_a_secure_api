@@ -2,13 +2,13 @@ const bodyParser = require('body-parser');
 const express =     require('express');                     //import the framework Express
 const userCtrl =    require('../controllers/user');         //import the controller user.js
 const router =      express.Router();                       //use the the express's method Router()
-const { body, validationResult} = require('express-validator'); //use express-validator to build a 'sanitize' function
+const {body, validationResult} = require('express-validator'); //use express-validator to build a 'sanitize' function
 
 
 const sanitize = (req, res, next) => {
-    const errors = validationResult(req);
-    if(!errors.isEmpty()) {
-        return res.status(400).json({errors})  // code 400: bad request
+    const error = validationResult(req);
+    if(!error.isEmpty()) {
+        return res.status(400).json({error})  // code 400: bad request
     }
     next();
 }
