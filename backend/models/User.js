@@ -1,5 +1,5 @@
-const mongoose = require('mongoose');
-const uniqueValidator = require('mongoose-unique-validator');
+const mongoose = require('mongoose');    // utilisation de mongoose. ODM (Object Data Modeling) demandé par la note de cadrage.
+const uniqueValidator = require('mongoose-unique-validator');  // plugin demandé
 
 // Modèle user
 const userSchema = mongoose.Schema({
