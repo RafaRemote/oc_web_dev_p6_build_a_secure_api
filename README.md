@@ -29,7 +29,6 @@ Avec un terminal, aller dans le dossier "frontend" puis:
 
 Avec un terminal, aller dans le dossier backend, puis:
 
-        - créer un dossier "images" **vide**,
         - créer un fichier ".env" et y implémenter les lignes de code qui vous ont été envoyées séparément,
         - penser à bien enregistrer,
 
