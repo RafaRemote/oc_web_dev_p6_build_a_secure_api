@@ -29,6 +29,10 @@ Avec un terminal, aller dans le dossier "frontend" puis:
 
 Avec un terminal, aller dans le dossier backend, puis:
 
+<<<<<<< HEAD
+=======
+        - créer un dossier "images" **vide**,
+>>>>>>> modification du readme: instructions supplémentaires = npm install node-sass
         - créer un fichier ".env" et y implémenter les lignes de code qui vous ont été envoyées séparément,
         - penser à bien enregistrer,
 
