@@ -29,13 +29,8 @@ Avec un terminal, aller dans le dossier "frontend" puis:
 
 Avec un terminal, aller dans le dossier backend, puis:
 
-<<<<<<< HEAD
-=======
-        - créer un dossier "images" **vide**,
->>>>>>> 640617f7bcf327cc884dacdf447a6549bbc103c2
         - créer un fichier ".env" et y implémenter les lignes de code qui vous ont été envoyées séparément,
         - penser à bien enregistrer,
-
         - enfin dans un terminal, ouvert dans le dosser backend:
     
             -taper: "npm install",
