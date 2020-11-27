@@ -82,7 +82,7 @@ exports.likeOneSauce = (req, res, _) => {
       .catch((error) => { res.status(400).json({error}); });
       
     } 
-    if (sauce.usersDisliked.find( x => x === req.body.userId)) {  //mêmes principes que précédemment avec le tableau usersDisliked
+    if (sauce.usersDisliked.find( x => x === req.body.user)) {  //mêmes principes que précédemment avec le tableau usersDisliked
       Sauce.updateOne({ _id: req.params.id }, {
         $inc: { dislikes: -1 },
         $pull: { usersDisliked: req.body.userId }
