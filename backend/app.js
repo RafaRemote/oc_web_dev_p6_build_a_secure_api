@@ -8,12 +8,16 @@ const path =            require('path');                    // import path: prov
 const cors =            require('cors');                    // import cors: manage cross-origin resource sharing
 const rateLimit =       require('express-rate-limit');      // comme son nom l'indique: on va fixer un taux limite pour les requêtes.
 
+<<<<<<< HEAD
 //constante à utiliser avec le package rateLimit
+=======
+>>>>>>> newBranch
 const limiter = rateLimit({         
   windowMs: 15 * 60 * 1000,       // = 15 minutes
   max: 100
 })
 
+<<<<<<< HEAD
 // use express
 const app = express();
 
@@ -44,6 +48,9 @@ const limiter = rateLimit({
 const saucesRoutes =    require('./routes/sauces');          
 const userRoutes =      require('./routes/user');
 
+=======
+// Use express
+>>>>>>> newBranch
 const app = express();
 
 // utilisation de express-rate-limit
@@ -90,6 +97,10 @@ app.use(bodyParser.json());
 // images management
 app.use('/images', express.static(path.join(__dirname, 'images')));
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> newBranch
 // import the routes for user and sauces from directory "routes"
 const saucesRoutes =    require('./routes/sauces');          
 const userRoutes =      require('./routes/user');

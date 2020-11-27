@@ -15,6 +15,7 @@ const {body, validationResult} = require('express-validator');  // on importe le
 // cette fonction servira à express-validator
 const sanitize = (req, res, next) => {
 <<<<<<< HEAD
+<<<<<<< HEAD
     const error = validationResult(req);
     if(!error.isEmpty()) {
         return res.status(400).json({error})  // code 400: bad request
@@ -23,6 +24,11 @@ const sanitize = (req, res, next) => {
     if(!errors.isEmpty()) {
         return res.status(400).json({errors})  
 >>>>>>> experiment
+=======
+    const error = validationResult(req);
+    if(!error.isEmpty()) {
+        return res.status(400).json({error})  // code 400: bad request
+>>>>>>> newBranch
     }
     next();      // si on ne trouve pas d'erreur par rapport à ce qu'on a demandé, on passe à la suite.
 };
