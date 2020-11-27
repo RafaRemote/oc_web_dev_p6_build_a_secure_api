@@ -62,7 +62,7 @@ exports.getAllSauce = (req, res, _) => {
 //fonction like
 //3 conditions possible car voici ce qu'on reçoit du frontend, la valeur du like est soit: 0, 1 ou -1 (req.body.like)
 // un switch statement est parfaitement adapté.
-exports.likeOneSauce = (req, res, _) => {
+exports.rateOneSauce = (req, res, _) => {
   switch (req.body.like) {
     case 0:                                                   //cas: req.body.like = 0
       Sauce.findOne({ _id: req.params.id })
@@ -74,7 +74,6 @@ exports.likeOneSauce = (req, res, _) => {
             })
               .then(() => { res.status(201).json({ message: "vote enregistré."}); }) //code 201: created
               .catch((error) => { res.status(400).json({error}); });
-
           } 
           if (sauce.usersDisliked.find(user => user === req.body.userId)) {  //mêmes principes que précédemment avec le tableau usersDisliked
             Sauce.updateOne({ _id: req.params.id }, {

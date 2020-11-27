@@ -1,43 +1,44 @@
-const bcrypt =  require('bcrypt');                                                    //import bcrypt: to hash passwords
-const jwt =     require('jsonwebtoken');                                              //import jsonwebtolen: to manage the token (REST API: stateless)
-const User =    require('../models/User');                                            //import mongoose model User
+const bcrypt =  require('bcrypt');   // pour hacher le mot de passe                                                 
+const jwt =     require('jsonwebtoken');                                             
+const User =    require('../models/User');                                           
 
-exports.signup = (req, res, next) => {                                                //
-  bcrypt.hash(req.body.password, 10)                                                  //hash password includes in the request (req.body.password) async funtion, will take time, will return a prommise and so it will be followed by .then() and .catch(). Salt = 10 times, standart (number of hashing alogythm executions).
-    .then(hash => {                                                                   //returns the hashed password: hash
-      const user = new User({                                                         //first: create a new User (see the mongoose model User in directory "Models")
-        email: req.body.email,                                                        //email of the new User: email included in the body request: req.body.email
-        password: hash                                                                //password = the hash that bcrypt did just make for us and did just return as a promise
+// inscription d'un utilisateur
+exports.signup = (req, res, next) => {                   
+  bcrypt.hash(req.body.password, 10)    // on hashe le mote de passe avec un salt de 10                                               
+    .then(hash => {                                                                  
+      const user = new User({                                                         
+        email: req.body.email,                                                        
+        password: hash                  // et on assigne le hash obtenu comme valeur de la propriété password de l'objet user 
       });
-      user.save()                                                                     //use save method to save the new user in the DataBase
-        .then(() => res.status(201).json({ message: 'new user created' }))            // response status: 201 status code: created
-        .catch(error => res.status(400).json({ error }));                             // response status: 400 status code: bad request
+      user.save()                       // et on sauve tout ça dans la base de données                                            
+        .then(() => res.status(201).json({ message: 'new user created' }))            
+        .catch(error => res.status(400).json({ error }));                             
     })
-    .catch(error => res.status(500).json({ error }));                                 // response status: 500 status code: internal server error
+    .catch(error => res.status(500).json({ error }));                                 
 };
 
-
-exports.login = (req, res, next) => {                                                 //
-  User.findOne({ email: req.body.email })                                             //method findOne: from the model, find same user with this property req.body.email, as the user log in with his email
-    .then(user => {                                                                   //use the returned promise
-      if (!user) {                                                                    //if false
-        return res.status(401).json({ message: 'user not found' });                   //returns status in the response: 401 code status: unathorized
+// connextion de l'utilisateur
+exports.login = (req, res, next) => {                                                 
+  User.findOne({ email: req.body.email })   // on recherche une objet de modèle User, ayant pour propriété "email" avec la même valeur que req.body.email                                          
+    .then(user => {                                                                   
+      if (!user) {   // pas trouvé ? = message: user not found                                                                  
+        return res.status(401).json({ message: 'user not found' }); 
       }
-      bcrypt.compare(req.body.password, user.password)                                //else it's true: use compare bcrypt method: compare the password property's value from the request, to the passord's property value from the user found
-        .then(valid => {                                                              //use the returned promise
-          if (!valid) {                                                               //if false
-            return res.status(404).json({ message: "incorrect password" });           //404 code status: not found
-          }
-          res.status(200).json({                                                      //else it's true: response status proprety's value is 200: 200 code status: ok.
-            userId: user._id,                                                         //returns in the response: the user._id from the database
-            token: jwt.sign(                                                          //use jsonwebtoken's method sign: paramaters: data to be encoded
-            { userId: user._id },                                                     //first argument: userId
-              process.env.TOKEN,                                                      //second argument: secret key for the encoding
-              { expiresIn: '24h' }                                                    //configuration argument: expiration time
+      bcrypt.compare(req.body.password, user.password)       // si on trouve, on prend le password et avec bcrypt on compare le passord and le requête avec le password du user trouvé dans la base de données                       
+        .then(valid => {    
+          if (!valid) {     // si le password n'est pas validé = message: incorrect password                                         
+            return res.status(404).json({ message: "incorrect password" });           
+          } // et si c'est valide....
+          res.status(200).json({                                                      
+            userId: user._id,        // dans la réponse on renvoir le user._id (ce _id est donc l'id généré dans mongoDB)
+            token: jwt.sign(         // et on renvoie un token d'authentification
+            { userId: user._id },                                                     
+              process.env.TOKEN,                                                      
+              { expiresIn: '24h' }   // avec une date d'expiration      
             )
           });
         })
-        .catch(error => res.status(500).json({ error }));                               // 500 status code: internal server error                 
+        .catch(error => res.status(500).json({ error }));                             
     })
-    .catch(error => res.status(500).json({ error }));                                   // 500 status code: internal server error
+    .catch(error => res.status(500).json({ error }));                                 
 };
