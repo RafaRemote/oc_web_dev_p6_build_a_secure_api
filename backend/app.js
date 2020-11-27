@@ -7,20 +7,22 @@ const path =            require('path');                    // import path: prov
 const cors =            require('cors');                    // import cors: manage cross-origin resource sharing
 const rateLimit =       require('express-rate-limit');      // comme son nom l'indique: on va fixer un taux limite pour les requêtes.
 
+//constante à utiliser avec le package rateLimit
 const limiter = rateLimit({         
   windowMs: 15 * 60 * 1000,       // = 15 minutes
   max: 100
 })
 
-// Use express
+// use express
 const app = express();
 
+// application du package
 app.use(limiter);
 
-// Secure HTTP headers
+// secure HTTP headers
 app.use(helmet());
 
-//setting the cross-scripting protection
+// setting the cross-scripting protection
 app.use((req, res, next) => {
   res.setHeader("X-XSS-Protection", "1; mode=block");
   next();
@@ -34,10 +36,9 @@ mongoose.connect(process.env.DB,
   {
     useNewUrlParser: true,
     useUnifiedTopology: true
-  })
+    })
   .then(() => console.log('connected to the database!'))
   .catch((error) => console.log(error));
-
 
 // manage cors
 app.use((req, res, next) => {
@@ -47,12 +48,11 @@ app.use((req, res, next) => {
   next();
 });
 
-// Parsing all incoming requests
+// parsing all incoming requests
 app.use(bodyParser.json());
 
-// Images management
+// images management
 app.use('/images', express.static(path.join(__dirname, 'images')));
-
 
 // import the routes for user and sauces from directory "routes"
 const saucesRoutes =    require('./routes/sauces');          
