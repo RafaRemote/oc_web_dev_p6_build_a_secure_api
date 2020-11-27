@@ -28,18 +28,11 @@ Avec un terminal, aller dans le dossier "frontend" puis:
 #### Partie backend
 
 Avec un terminal, aller dans le dossier backend, puis:
-
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
         - créer un dossier "images" **vide**,
->>>>>>> modification du readme: instructions supplémentaires = npm install node-sass
->>>>>>> newBranch
         - créer un fichier ".env" et y implémenter les lignes de code qui vous ont été envoyées séparément,
         - penser à bien enregistrer,
-        - enfin dans un terminal, ouvert dans le dosser backend:
-    
+
+        - enfin dans un terminal, ouvert dans le dosser backend:    
             -taper: "npm install",
             -puis: "nodemon server",
             -le serveur écoute sur le port: http://localhost:3000
