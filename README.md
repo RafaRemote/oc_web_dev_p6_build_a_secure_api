@@ -18,9 +18,10 @@ Le site **SO PEKOCKO** est un site d'avis culinaires où les utilisateurs peuven
 
 #### Partie frontend
 
+Précision: il faut installer node-sass à part.
+
 Avec un terminal, aller dans le dossier "frontend" puis:
 
-    - taper: "npm install node-sass",
     - taper: "npm install",
     - puis: "npm start",
     - enfin: dans votre navigateur se rendre à l'adresse: http://localhost:4200 
