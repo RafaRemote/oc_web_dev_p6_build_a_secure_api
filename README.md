@@ -39,3 +39,9 @@ Avec un terminal, aller dans le dossier backend, puis:
             -le serveur écoute sur le port: http://localhost:3000
 
 **Arrivé à ce point, vous pouvez utiliser les fonctionnalités du site.**
+
+ps: le travail présenté ici a été réalisé pour la partie backend. Pour la partie frontend, l'adresse du code original est la suivante:
+
+<https://github.com/OpenClassrooms-Student-Center/dwj-projet6>
+
+Cette partie frontend originale a été incluse dans ce repository ci-présent dans un souci de praticité, pour ne pas avoir 2 repositories à cloner ainsi que quelques manipulatons additionnelles.
