@@ -10,4 +10,5 @@ const userSchema = mongoose.Schema({
 // Plugin qui restreint à une création de user par adresse mail 
 userSchema.plugin(uniqueValidator);
 
+
 module.exports = mongoose.model('User', userSchema);
