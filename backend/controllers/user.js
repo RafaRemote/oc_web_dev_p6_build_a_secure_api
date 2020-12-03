@@ -2,29 +2,31 @@
 // require('dotenv').config()
 const bcrypt =  require('bcrypt');   // pour hasher le mot de passe                                                 
 const jwt =     require('jsonwebtoken');                                             
-const User =    require('../models/User');    
+const User =    require('../models/User');
+const Maskata = require('maskdata');
+const MaskData = require('maskdata');
 
 
 // fonction d'encodage qui servira à l'email
 
-function maskator(sentence) {
-  if (typeof sentence === "string") {
-    let headMail = sentence.slice(0,1);
-    let bodyMail = sentence.slice(1, sentence.length-4);
-    let bottomMail = sentence.slice(sentence.length-4, sentence.length);
-    let final = [];
-    var masked = bodyMail.split('');
-    var maskedMail = [];
-    for(let i in masked) {
-      masked[i] = '*';
-      maskedMail += masked[i];  
-    }
-    final += headMail + maskedMail + bottomMail
-    return final;
-  }
-  console.log(sentence + " is not a mail");
-  return false
-}
+// function maskator(sentence) {
+//   if (typeof sentence === "string") {
+//     let headMail = sentence.slice(0,1);
+//     let bodyMail = sentence.slice(1, sentence.length-4);
+//     let bottomMail = sentence.slice(sentence.length-4, sentence.length);
+//     let final = [];
+//     var masked = bodyMail.split('');
+//     var maskedMail = [];
+//     for(let i in masked) {
+//       masked[i] = '*';
+//       maskedMail += masked[i];  
+//     }
+//     final += headMail + maskedMail + bottomMail
+//     return final;
+//   }
+//   console.log(sentence + " is not a mail");
+//   return false
+// }
 
 
 
@@ -33,7 +35,7 @@ exports.signup = (req, res, next) => {
   bcrypt.hash(req.body.password, 10)    // on hashe le mot de passe avec un salt de 10                                               
     .then(hash => {                                                         
       const user = new User({                                                         
-        email: maskator(req.body.email),  // on sauve un mail encodé
+        email: MaskData.maskEmail2(req.body.email),  // on sauve un mail encodé
         password: hash                  // et on assigne le hash obtenu comme valeur de la propriété password de l'objet user 
     });
    console.log(user)
@@ -46,7 +48,7 @@ exports.signup = (req, res, next) => {
 
 // connexion de l'utilisateur
 exports.login = (req, res, next) => {                                                 
-  User.findOne({ email : maskator(req.body.email)}) // on recherche l'équivalent du mail encodé
+  User.findOne({ email: MaskData.maskEmail2(req.body.email)}) // on recherche l'équivalent du mail encodé
     .then(user => {           // on recherche une objet de modèle User, ayant pour propriété "email" avec la même valeur que req.body.email                                                                                                    
       if (!user) {   // pas trouvé ? = message: user not found                                                                  
         return res.status(401).json({ message: 'user not found' }); 
