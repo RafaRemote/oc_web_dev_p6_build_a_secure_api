@@ -1,4 +1,14 @@
-# SO PEKOCKO
+# OpenClassrooms / Web Developer Path
+
+## Project number 6: Build a secure app for a food review app (So Pekocko)
+
+Skills:
+
+- implement logical data model according to regulations
+- store data securely
+- implement CRUD operations securely
+
+## Detailed instructions in french 🇫🇷 
 
 ## Présentation et instructions
 
